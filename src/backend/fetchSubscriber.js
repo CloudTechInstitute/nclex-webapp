@@ -49,8 +49,9 @@ function displaySubscribers(subscribers) {
             subscriber.firstname
           }</th>
           <td class="px-6 py-2">${subscriber.lastname}</td>
-          <td class="px-6 py-2">${subscriber.surname}</td>
           <td class="px-6 py-2">${subscriber.othernames}</td>
+          <td class="px-6 py-2">${subscriber.email}</td>
+          <td class="px-6 py-2">${subscriber.country}</td>
           <td class="px-6 py-2">30-Day </td>
           <td class="px-6 py-2 font-bold ${
             subscriber.status === "active" ? "text-green-600" : "text-red-600"

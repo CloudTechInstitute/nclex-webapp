@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['UserRole'] = $user['role']; // Store username in session
             $_SESSION['UserID'] = $user['id']; // Store user id in session
             $_SESSION['UserStatus'] = $user['status']; // Store user id in session
+            $_SESSION['dp'] = $user['profileImage']; // Store user id in session
             unset($user['password']); // Remove password from response for security
 
             $response["status"] = "success";

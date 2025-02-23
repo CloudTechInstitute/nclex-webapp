@@ -1,3 +1,5 @@
+//reset password
+
 document
   .getElementById("resetPasswordForm")
   ?.addEventListener("submit", async function (e) {
@@ -33,6 +35,7 @@ document
     showToast(toastMessage, toastType);
   });
 
+//update account profile
 document
   .getElementById("updateAccountProfileForm")
   ?.addEventListener("submit", async function (e) {

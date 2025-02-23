@@ -9,6 +9,7 @@ if (!isset($_SESSION['LoggedUser'])) {
     $role = $_SESSION['UserRole'];
     $userID = $_SESSION['UserID'];
     $userStatus = $_SESSION['UserStatus'];
+    $dp = $_SESSION['dp'];
 }
 
 ?>
@@ -28,11 +29,24 @@ if (!isset($_SESSION['LoggedUser'])) {
                     <div
                         class="w-full max-w-sm bg-white border border-gray-400 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-col items-center py-20">
-                            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="images/dp.jpg"
-                                alt="profile image" />
+                            <?php
+                            $query = "SELECT * FROM employees WHERE id = '$userID'";
+                            $result = $conn->query($query);
+
+                            if ($result && $result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $profileImage = !empty($row['profileImage']) ? $row['profileImage'] : 'blank_dp.png';
+                            } else {
+                                $profileImage = 'blank_dp.png'; // Default image if user doesn't exist
+                            }
+
+                            echo '<div class="w-24 h-24 mb-3 rounded-full shadow-lg overflow-hidden">
+                                    <img class="w-full h-full object-cover" src="images/' . $profileImage . '" alt="Profile Image" />
+                                </div>';
+                            ?>
+
                             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><?php echo $user; ?></h5>
                             <span class="text-sm text-gray-500 dark:text-gray-400 mb-4"><?php echo $role; ?></span>
-
 
                             <?php if ($userStatus == 'active') {
                                 echo '<span class="text-xs uppercase text-green-600 p-2 border border-green-500 rounded-lg">' . $userStatus . '</span>';
@@ -54,9 +68,6 @@ if (!isset($_SESSION['LoggedUser'])) {
     </div>
     <!-- role modal -->
 
-
-    <!-- <script type="text/javascript" src="backend/js-functions.js"></script> -->
-    <script type="text/javascript" src="backend/fetchEmployees.js"></script>
-    <script type="text/javascript" src="backend/settings-scripts.js"></script>
+    <script type="text/javascript" src="backend/uploadProfile.js"></script>
 
     <?php include 'footer.php'; ?>
