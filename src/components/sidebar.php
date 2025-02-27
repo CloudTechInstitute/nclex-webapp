@@ -3,23 +3,63 @@
     <div>
         <h1 class="text-2xl font-bold dark:text-green-400 text-blue-900">Content Center</h1>
         <nav class="mt-6">
-            <a href="index.php"
-                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Dashboard</a>
-            <a href="employees.php"
-                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Employee
-                Accounts</a>
-            <a href="subscribers.php"
-                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Subscriber
-                Accounts</a>
-            <a href="roles.php"
-                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Roles</a>
-            <a href="#"
-                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Subscriptions</a>
-            <a href="#" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Videos</a>
-            <a href="#" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">E-Books</a>
-            <a href="#" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Quizzes</a>
-            <a href="settings.php"
-                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">Settings</a>
+            <a href="index.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-gauge"></i>
+                    <div>Dashboard</div>
+                </div>
+            </a>
+            <a href="employees.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-users"></i>
+                    <div>Employee Accounts</div>
+                </div>
+            </a>
+            <a href="subscribers.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-users"></i>
+                    <div>Subscribers</div>
+                </div>
+            </a>
+            <a href="roles.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-sliders"></i>
+                    <div>Roles</div>
+                </div>
+            </a>
+            <a href="subscriptions.php"
+                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-list"></i>
+                    <div>Subscriptions</div>
+                </div>
+            </a>
+
+            <a href="#" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-video"></i>
+                    <div>Videos</div>
+                </div>
+            </a>
+
+            <a href="#" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-book"></i>
+                    <div>E-Books</div>
+                </div>
+            </a>
+            <a href="#" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-book-open"></i>
+                    <div>Quizzes</div>
+                </div>
+            </a>
+            <a href="settings.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-gear"></i>
+                    <div>Settings</div>
+                </div>
+            </a>
         </nav>
     </div>
     <div class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-200 dark:bg-gray-800">

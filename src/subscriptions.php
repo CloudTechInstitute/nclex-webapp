@@ -18,8 +18,8 @@ if (!isset($_SESSION['LoggedUser'])) {
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Content Area -->
-            <div class="px-6 py-4 flex justify-between items-end">
-                <p class="uppercase font-bold text-xl">dashboard</p>
+            <div class="px-6 py-4 flex justify-between items-end mb-8">
+                <p class="uppercase font-bold text-xl">subscriptions</p>
                 <div class="flex gap-4 justify-between">
                     <button data-modal-target="role-modal" data-modal-toggle="role-modal"
                         class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
@@ -41,43 +41,21 @@ if (!isset($_SESSION['LoggedUser'])) {
 
             </div>
             <div class="overflow-y-auto">
-                <main class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                    <a href="roles.php" id="roleCard"
-                        class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-smhover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700"></a>
-
-                    <a href="subscribers.php" id="studentCard"
-                        class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700">
-                    </a>
-                    <a href="employees.php" id="employeeCard"
-                        class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-smhover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700"></a>
-
-                    <a href="#"
-                        class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700">
-
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Expired Subscriptions</p>
-                        <h5 class="mb-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">500
-                        </h5>
-                    </a>
-
-                </main>
-
-                <div class="w-full px-6 mb-5">
-                    <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent employee accounts</p>
+                <div class="hidden px-6 mb-5">
                     <div class="border border-gray-500 ">
                         <?php include 'components/employee-table.php'; ?>
                     </div>
                 </div>
 
                 <div class="flex gap-6 w-full px-6 mb-5">
-                    <div class="hidden w-full">
-                        <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent roles</p>
+                    <div class="w-full">
+                        <!-- <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent roles</p> -->
                         <div class="border border-gray-500 ">
-                            <?php include 'components/roles-table.php'; ?>
+                            <?php include 'components/subscriptions-table.php'; ?>
                         </div>
                     </div>
-                    <div class="w-full">
-                        <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent subscriber accounts</p>
+                    <div class="hidden">
+                        <!-- <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent subscriber accounts</p> -->
                         <div class="border border-gray-500 ">
                             <?php include 'components/subscriber-table.php'; ?>
                         </div>
@@ -344,10 +322,11 @@ if (!isset($_SESSION['LoggedUser'])) {
     </div>
     </div>
 
-    <script type="text/javascript" src="backend/js-functions.js"></script>
     <script type="text/javascript" src="backend/fetchEmployees.js"></script>
     <script type="text/javascript" src="backend/fetchSubscriber.js"></script>
     <script type="text/javascript" src="backend/dashboardCards.js"></script>
     <script type="text/javascript" src="backend/create-product.js"></script>
+    <script type="text/javascript" src="backend/js-functions.js"></script>
+    <script type="text/javascript" src="backend/fetch-subscriptions.js"></script>
 
     <?php include 'footer.php'; ?>
