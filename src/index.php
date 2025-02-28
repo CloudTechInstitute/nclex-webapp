@@ -16,33 +16,34 @@ if (!isset($_SESSION['LoggedUser'])) {
         <!-- Sidebar -->
         <?php include 'components/sidebar.php' ?>
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col w-full overflow-y-auto">
             <!-- Content Area -->
-            <div class="px-6 py-4 flex justify-between items-end">
-                <p class="uppercase font-bold text-xl">dashboard</p>
-                <div class="flex gap-4 justify-between">
-                    <button data-modal-target="role-modal" data-modal-toggle="role-modal"
-                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
-                        type="button">
-                        New Role
-                    </button>
-                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
-                        type="button">
-                        New Account
-                    </button>
-                    <button data-modal-target="product-modal" data-modal-toggle="product-modal"
-                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
-                        type="button">
-                        New Product
-                    </button>
+            <div class="px-6 py-4 md:py-2 flex flex-wrap mt-5 lg:mt-0 justify-between items-center gap-4 md:gap-0">
+                <p class="ml-10 md:ml-0 uppercase font-bold text-xl">Dashboard</p>
+                <div class="flex flex-wrap gap-2 justify-center  md:justify-end">
+                    <?php if ($role == "account manager") { ?>
+                        <button data-modal-target="role-modal" data-modal-toggle="role-modal"
+                            class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
+                            New Role
+                        </button>
+                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                            class="block text-white dark:text-gray-900  bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
+                            New Account
+                        </button>
+                    <?php } else { ?>
+                        <button data-modal-target="product-modal" data-modal-toggle="product-modal"
+                            class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
+                            New Product
+                        </button>
+                    <?php } ?>
                 </div>
-
-
             </div>
-            <div class="overflow-y-auto">
-                <main class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
+            <div>
+                <main class="p-6 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                    <?php
+                    if ($role == 'account manager') {
+                        echo '
                     <a href="roles.php" id="roleCard"
                         class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-smhover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700"></a>
 
@@ -52,33 +53,35 @@ if (!isset($_SESSION['LoggedUser'])) {
                     <a href="employees.php" id="employeeCard"
                         class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-smhover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700"></a>
 
-                    <a href="#"
+                    <a href="subscriptions.php" id="subscriptionCard"
                         class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700">
-
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Expired Subscriptions</p>
-                        <h5 class="mb-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">500
-                        </h5>
                     </a>
-
+                    <a href="expired-subscriptions.php" id="expired-subscriptionCard"
+                        class="block max-w-sm p-6 bg-white border border-gray-400 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-500 dark:hover:bg-gray-700">
+                    </a>';
+                    } else {
+                        echo '';
+                    }
+                    ?>
                 </main>
 
-                <div class="w-full px-6 mb-5">
+                <div class="w-full px-6 mb-5 ">
                     <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent employee accounts</p>
-                    <div class="border border-gray-500 ">
+                    <div class="border border-gray-500 overflow-x-auto">
                         <?php include 'components/employee-table.php'; ?>
                     </div>
                 </div>
 
-                <div class="flex gap-6 w-full px-6 mb-5">
+                <div class="mb-5 lg:mb-0 w-full px-6 ">
                     <div class="hidden w-full">
                         <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent roles</p>
-                        <div class="border border-gray-500 ">
+                        <div class="border border-gray-500 overflow-x-auto">
                             <?php include 'components/roles-table.php'; ?>
                         </div>
                     </div>
                     <div class="w-full">
                         <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent subscriber accounts</p>
-                        <div class="border border-gray-500 ">
+                        <div class="border border-gray-500 overflow-x-auto">
                             <?php include 'components/subscriber-table.php'; ?>
                         </div>
                     </div>
@@ -344,10 +347,10 @@ if (!isset($_SESSION['LoggedUser'])) {
     </div>
     </div>
 
-    <script type="text/javascript" src="backend/js-functions.js"></script>
-    <script type="text/javascript" src="backend/fetchEmployees.js"></script>
-    <script type="text/javascript" src="backend/fetchSubscriber.js"></script>
-    <script type="text/javascript" src="backend/dashboardCards.js"></script>
-    <script type="text/javascript" src="backend/create-product.js"></script>
+    <script type="text/javascript" src="backend/js/js-functions.js"></script>
+    <script type="text/javascript" src="backend/js/fetchEmployees.js"></script>
+    <script type="text/javascript" src="backend/js/fetchSubscriber.js"></script>
+    <script type="text/javascript" src="backend/js/dashboardCards.js"></script>
+    <script type="text/javascript" src="backend/js/create-product.js"></script>
 
     <?php include 'footer.php'; ?>

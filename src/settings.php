@@ -21,13 +21,13 @@ if (!isset($_SESSION['LoggedUser'])) {
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Content Area -->
-            <div class="px-6 py-8 flex justify-between items-end mb-8">
-                <p class="uppercase font-bold text-xl">Settings</p>
+            <div class="px-6 py-8  flex justify-between items-end mb-8">
+                <p class="uppercase ml-10 lg:ml-0 font-bold text-xl">Settings</p>
             </div>
             <div class="overflow-y-auto px-6">
-                <div class="flex gap-6">
+                <div class="lg:flex gap-6">
                     <div
-                        class="w-full max-w-sm bg-white border border-gray-400 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        class="mb-5 lg:mb-0 w-full lg:max-w-sm bg-white border border-gray-400 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-col items-center py-20">
                             <?php
                             $query = "SELECT * FROM employees WHERE id = '$userID'";
@@ -59,7 +59,7 @@ if (!isset($_SESSION['LoggedUser'])) {
                         </div>
                     </div>
                     <div
-                        class="dark:bg-gray-800 p-3 h-[500px] max-h-[500px] rounded-lg w-[70%] border dark:border-gray-700 border-gray-400 shadow-md">
+                        class="dark:bg-gray-800 p-3 lg:h-[500px] lg:max-h-[500px] mb-4 lg:mb-0 rounded-lg w-full lg:w-[70%] border dark:border-gray-700 border-gray-400 shadow-md">
                         <?php include 'components/tab.php'; ?>
                     </div>
                 </div>
@@ -68,6 +68,6 @@ if (!isset($_SESSION['LoggedUser'])) {
     </div>
     <!-- role modal -->
 
-    <script type="text/javascript" src="backend/uploadProfile.js"></script>
+    <script type="text/javascript" src="backend/js/uploadProfile.js"></script>
 
     <?php include 'footer.php'; ?>

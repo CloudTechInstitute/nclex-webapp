@@ -16,10 +16,10 @@ if (!isset($_SESSION['LoggedUser'])) {
         <!-- Sidebar -->
         <?php include 'components/sidebar.php' ?>
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col overflow-y-auto w-full">
             <!-- Content Area -->
-            <div class="px-6 py-4 flex justify-between items-end mb-8">
-                <p class="uppercase font-bold text-xl">subscriptions</p>
+            <div class="px-6 py-4  md:flex justify-between items-end mb-8">
+                <p class="uppercase font-bold text-xl ml-10 md:ml-0">subscriptions</p>
                 <div class="flex gap-4 justify-between">
                     <button data-modal-target="role-modal" data-modal-toggle="role-modal"
                         class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
@@ -322,11 +322,11 @@ if (!isset($_SESSION['LoggedUser'])) {
     </div>
     </div>
 
-    <script type="text/javascript" src="backend/fetchEmployees.js"></script>
-    <script type="text/javascript" src="backend/fetchSubscriber.js"></script>
-    <script type="text/javascript" src="backend/dashboardCards.js"></script>
-    <script type="text/javascript" src="backend/create-product.js"></script>
-    <script type="text/javascript" src="backend/js-functions.js"></script>
-    <script type="text/javascript" src="backend/fetch-subscriptions.js"></script>
+    <script type="text/javascript" src="backend/js/fetchEmployees.js"></script>
+    <script type="text/javascript" src="backend/js/fetchSubscriber.js"></script>
+    <script type="text/javascript" src="backend/js/dashboardCards.js"></script>
+    <script type="text/javascript" src="backend/js/create-product.js"></script>
+    <script type="text/javascript" src="backend/js/js-functions.js"></script>
+    <script type="text/javascript" src="backend/js/fetch-subscriptions.js"></script>
 
     <?php include 'footer.php'; ?>

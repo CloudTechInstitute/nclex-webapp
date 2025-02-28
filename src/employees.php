@@ -12,15 +12,15 @@ if (!isset($_SESSION['LoggedUser'])) {
 ?>
 
 <body class="dark:bg-gray-800 dark:text-white">
-    <div class=" flex h-screen">
+    <div class="flex h-screen">
         <!-- Sidebar -->
         <?php include 'components/sidebar.php' ?>
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col w-full">
             <!-- Content Area -->
-            <div class="px-6 py-4 flex justify-between items-end mb-8">
-                <p class="uppercase font-bold text-xl">employees</p>
-                <div class="flex gap-4 justify-between">
+            <div class="px-6 py-4 md:py-2 md:flex justify-between mt-5 lg:mt-0 items-end mb-8 ">
+                <p class="uppercase ml-10 md:ml-0 font-bold text-xl">employees</p>
+                <div class="flex gap-4 mt-5 lg:mt-0 md:justify-between">
                     <button data-modal-target="role-modal" data-modal-toggle="role-modal"
                         class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
                         type="button">
@@ -32,12 +32,12 @@ if (!isset($_SESSION['LoggedUser'])) {
                         New Account
                     </button>
                 </div>
-
-
             </div>
-            <div class="overflow-y-auto">
-                <div class="w-full px-6 mb-5">
-                    <div class="border border-gray-500 ">
+
+            <div class="w-full">
+                <div class="px-6 mb-5 ">
+                    <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent employee accounts</p>
+                    <div class="border border-gray-500 overflow-x-auto">
                         <?php include 'components/employee-table.php'; ?>
                     </div>
                 </div>
@@ -49,12 +49,7 @@ if (!isset($_SESSION['LoggedUser'])) {
                             <?php include 'components/roles-table.php'; ?>
                         </div>
                     </div>
-                    <div class="w-full">
-                        <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent subscriber accounts</p>
-                        <div class="border border-gray-500 ">
-                            <?php include 'components/subscriber-table.php'; ?>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -204,7 +199,7 @@ if (!isset($_SESSION['LoggedUser'])) {
         </div>
     </div>
 
-    <script type="text/javascript" src="backend/js-functions.js"></script>
-    <script type="text/javascript" src="backend/fetchEmployees.js"></script>
+    <script type="text/javascript" src="backend/js/js-functions.js"></script>
+    <script type="text/javascript" src="backend/js/fetchEmployees.js"></script>
 
     <?php include 'footer.php'; ?>

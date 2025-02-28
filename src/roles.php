@@ -16,11 +16,11 @@ if (!isset($_SESSION['LoggedUser'])) {
         <!-- Sidebar -->
         <?php include 'components/sidebar.php' ?>
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col overflow-y-auto w-full">
             <!-- Content Area -->
-            <div class="px-6 py-4 flex justify-between items-end mb-8">
-                <p class="uppercase font-bold text-xl">roles</p>
-                <div class="flex gap-4 justify-between">
+            <div class="px-6 py-4 md:flex justify-between mt-5 lg:mt-0 items-end mb-8">
+                <p class="uppercase font-bold text-xl ml-10 md:ml-0">roles</p>
+                <div class="flex gap-4 justify-between mt-5 lg:mt-0">
                     <button data-modal-target="role-modal" data-modal-toggle="role-modal"
                         class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
                         type="button">
@@ -45,7 +45,7 @@ if (!isset($_SESSION['LoggedUser'])) {
                 <div class="flex gap-6 w-full px-6 mb-5">
                     <div class="w-full">
                         <!-- <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent roles</p> -->
-                        <div class="border border-gray-500 ">
+                        <div class="border border-gray-500 overflow-x-auto">
                             <?php include 'components/roles-table.php'; ?>
                         </div>
                     </div>
@@ -204,7 +204,7 @@ if (!isset($_SESSION['LoggedUser'])) {
         </div>
     </div>
 
-    <script type="text/javascript" src="backend/js-functions.js"></script>
-    <script type="text/javascript" src="backend/fetchEmployees.js"></script>
+    <script type="text/javascript" src="backend/js/js-functions.js"></script>
+    <script type="text/javascript" src="backend/js/fetchEmployees.js"></script>
 
     <?php include 'footer.php'; ?>

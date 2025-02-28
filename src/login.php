@@ -59,5 +59,5 @@
         </form>
     </div>
 
-    <script type="text/javascript" src="backend/login.js"></script>
+    <script type="text/javascript" src="backend/js/login.js"></script>
     <?php include 'footer.php'; ?>
