@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $optionsString = implode(',', $options); // Convert to a comma-separated string
 
     // Insert into the database
-    $stmt = $conn->prepare("INSERT INTO questions (question, options, answer, solution, type, category, is_attempted) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssi", $question, $optionsString, $correctAnswer, $solution, $type, $category, $is_attempted);
+    $stmt = $conn->prepare("INSERT INTO questions (question, options, answer, solution, type, category, mark_allocated, is_attempted) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssii", $question, $optionsString, $correctAnswer, $solution, $type, $category, $markAllocated, $is_attempted);
 
     if ($stmt->execute()) {
         echo json_encode(['status' => 'success', 'message' => 'Question added successfully']);

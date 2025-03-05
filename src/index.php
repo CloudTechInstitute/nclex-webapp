@@ -154,6 +154,7 @@ if (!isset($_SESSION['LoggedUser'])) {
     switch ($role) {
         case "content manager": ?>
             <script type="text/javascript" src="backend/js/content-dashboardCards.js"></script>
+            <script type="text/javascript" src="backend/js/create-question.js"></script>
             <?php break; ?>
         <?php default: ?>
             <script type="text/javascript" src="backend/js/js-functions.js"></script>
