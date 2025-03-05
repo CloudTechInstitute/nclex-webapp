@@ -5,6 +5,6 @@
   "dependencies": {
     "apexcharts": "^3.46.0",
     "chart.js": "^4.4.7",
-    "flowbite": "^3.1.1"
+    "flowbite": "^3.1.2"
   }
 }
