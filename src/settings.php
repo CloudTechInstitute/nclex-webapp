@@ -69,5 +69,6 @@ if (!isset($_SESSION['LoggedUser'])) {
     <!-- role modal -->
 
     <script type="text/javascript" src="backend/js/uploadProfile.js"></script>
+    <script type="text/javascript" src="backend/js/settings-scripts.js"></script>
 
     <?php include 'footer.php'; ?>

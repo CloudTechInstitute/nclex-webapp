@@ -9,8 +9,8 @@ $response = array();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Get and sanitize input
-    $username = isset($_POST['username']) ? filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING) : '';
-    $role = isset($_POST['role']) ? filter_var(trim($_POST['role']), FILTER_SANITIZE_STRING) : '';
+    $username = isset($_POST['username']) ? filter_var(trim($_POST['username'])) : '';
+    $role = isset($_POST['role']) ? filter_var(trim($_POST['role']), ) : '';
     $password = isset($_POST['password']) ? trim($_POST['password']) : '';
 
     if (empty($username) || empty($role) || empty($password)) {

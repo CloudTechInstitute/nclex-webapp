@@ -5,7 +5,7 @@
         <div
             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Import Questions
+                Import Questions File
             </h3>
             <button type="button"
                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -18,11 +18,12 @@
             </button>
         </div>
         <!-- Modal body -->
-        <form class="p-4 md:p-5" id="employeeForm" method="post" action="backend/roles.php">
+        <form class="p-4 md:p-5" id="importQuestionForm" method="post" enctype="multipart/form-data">
             <div class="grid gap-4 mb-4 grid-cols-2">
                 <div class="col-span-2">
-                    <label for="EmployeeName"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Import file
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Import file (.xls,
+                        .xlsx,
+                        .csv)
                     </label>
                     <input type="file" name="questions" id="questions-file"
                         class="block p-4 w-full text-sm text-gray-900 border border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600"
