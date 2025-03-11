@@ -20,22 +20,48 @@ if (!isset($_SESSION['LoggedUser'])) {
             <!-- Content Area -->
             <div class="px-6 py-4  md:flex justify-between items-end mb-8">
                 <p class="uppercase font-bold text-xl ml-10 md:ml-0">subscriptions</p>
-                <div class="flex gap-4 justify-between">
+                <div class="flex flex-wrap gap-2 justify-center  md:justify-end">
+                    <?php
+                    switch ($role) {
+                        case "account manager":
+                            ?>
                     <button data-modal-target="role-modal" data-modal-toggle="role-modal"
-                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
-                        type="button">
+                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
                         New Role
                     </button>
                     <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
-                        type="button">
+                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
                         New Account
                     </button>
+                    <?php break;
+
+                        case "content manager":
+                            ?>
+                    <button data-modal-target="Question-modal" data-modal-toggle="Question-modal"
+                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
+                        New Question
+                    </button>
+                    <button data-modal-target="importQuestion-modal" data-modal-toggle="importQuestion-modal"
+                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
+                        Import Questions
+                    </button>
+                    <?php break;
+
+                        case "product manager":
+                            ?>
                     <button data-modal-target="product-modal" data-modal-toggle="product-modal"
-                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-400 dark:focus:ring-green-600"
-                        type="button">
+                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
                         New Product
                     </button>
+
+                    <?php break;
+
+                        default:
+                            // No buttons for undefined roles
+                            break;
+                    }
+                    ?>
+
                 </div>
 
 

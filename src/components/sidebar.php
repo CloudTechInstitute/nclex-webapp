@@ -53,10 +53,10 @@
                     <div>Questions</div>
                 </div>
             </a>
-            <a href="#" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+            <a href="lessons.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
                 <div class="flex gap-3 items-center">
                     <i class="fa-solid text-blue-600 dark:text-green-400 fa-book-open"></i>
-                    <div>Quizzes</div>
+                    <div>Lessons</div>
                 </div>
             </a>
             <a href="subscriptions.php"
@@ -66,6 +66,32 @@
                     <div>Subscriptions</div>
                 </div>
             </a><?php
+                    break;
+
+                case 'product manager':
+                    ?>
+
+            <a href="products.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid fa-layer-group text-blue-600 dark:text-green-400"></i>
+                    <div>Products</div>
+                </div>
+            </a>
+            <a href="user-subscriptions.php"
+                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid text-blue-600 dark:text-green-400 fa-users-gear"></i>
+                    <div>User Subscriptions</div>
+                </div>
+            </a>
+            <a href="subscriptions.php"
+                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
+                <div class="flex gap-3 items-center">
+                    <i class="fa-solid text-blue-600 dark:text-green-400 fa-list"></i>
+                    <div>Subscriptions</div>
+                </div>
+            </a>
+            <?php
                     break;
                 default:
             }

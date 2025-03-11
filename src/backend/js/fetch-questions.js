@@ -1,99 +1,3 @@
-document
-  .getElementById("QuestionForm")
-  .addEventListener("submit", async function (e) {
-    e.preventDefault(); // Prevent default form submission
-
-    let formData = new FormData(this);
-    let toastMessage = "";
-    let toastType = "";
-
-    try {
-      let response = await fetch("backend/create-questions.php", {
-        method: "POST",
-        body: formData,
-      });
-
-      let result;
-      if (response.ok) {
-        result = await response.json();
-        toastMessage = result.message;
-        toastType = "success";
-
-        this.reset();
-      } else {
-        throw new Error("Unable to create question. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      toastMessage = "Unable to create question. Please try again.";
-      toastType = "error";
-    }
-
-    // Close the modal
-    let modal = document.getElementById("question-modal");
-    if (modal) {
-      modal.classList.add("hidden");
-      //   modal.setAttribute("aria-hidden", "true"); // Accessibility
-    }
-
-    // Simulate clicking the toggle button (if available)
-    let modalToggle = document.querySelector(
-      "[data-modal-toggle='question-modal']"
-    );
-    if (modalToggle) {
-      modalToggle.click();
-    }
-
-    // Remove backdrop if still present
-    let backdrop = document.querySelector(
-      ".fixed.inset-0.bg-black.bg-opacity-50"
-    );
-    if (backdrop) {
-      backdrop.remove();
-    }
-
-    // Restore scrolling to the body
-    document.body.classList.remove("overflow-hidden");
-
-    // Create toast notification dynamically
-    let toast = document.createElement("div");
-    toast.className =
-      "flex items-center w-full max-w-sm p-4 mb-4 text-gray-500 bg-gray-100 rounded-lg shadow-lg dark:text-gray-400 dark:bg-gray-700 fixed top-5 left-1/2 -translate-x-1/2";
-
-    // Determine toast icon and color
-    let iconColor =
-      toastType === "success"
-        ? "text-green-500 bg-green-100 dark:bg-green-800 dark:text-green-200"
-        : "text-red-500 bg-red-100 dark:bg-red-800 dark:text-red-200";
-
-    toast.innerHTML = `
-      <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 ${iconColor}">
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-          </svg>
-      </div>
-      <div class="ms-3 text-sm font-normal">${toastMessage}</div>
-      <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-          onclick="this.parentElement.remove()">
-          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-          </svg>
-      </button>
-    `;
-
-    // Append toast notification to body
-    document.body.appendChild(toast);
-
-    // Auto-remove the toast after 3 seconds
-    setTimeout(() => {
-      toast.remove();
-    }, 3000);
-
-    fetchQuestion();
-  });
-
-// Fetch employee accounts
-
 async function fetchQuestion() {
   let tableBody = document.getElementById("questionsTableBody");
 
@@ -128,18 +32,8 @@ async function fetchQuestion() {
   }
 }
 
-function showToast(message, type) {
-  let toast = document.createElement("div");
-  toast.className = `fixed top-5 left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-lg ${
-    type === "success" ? "bg-green-600 text-white" : "bg-red-600 text-white"
-  }`;
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
-}
-
 async function deleteQuestion(questionId) {
-  if (!confirm("Are you sure you want to delete this question?")) return;
+  if (!confirm("Are you sure you want to delete this role?")) return;
 
   try {
     let response = await fetch("backend/delete_question.php", {
@@ -150,21 +44,16 @@ async function deleteQuestion(questionId) {
 
     let result = await response.json();
     if (result.status === "success") {
-      let questionElement = document.getElementById(`question-${questionId}`);
-      if (questionElement) {
-        questionElement.remove();
-        showToast("Question deleted successfully!", "success");
-      }
+      document.getElementById(`role-${questionId}`).remove();
+      showToast("Role deleted successfully!", "success");
     } else {
-      showToast("Failed to delete question.", "error");
+      showToast("Error deleting role: " + result.message, "error");
     }
   } catch (error) {
     console.error("Error:", error);
-    showToast("Failed to delete question.", "error");
+    showToast("Failed to delete role.", "error");
   }
-  fetchQuestion();
 }
-
 // Function to display Questions in the table
 function displayQuestions(questions) {
   let tableBody = document.getElementById("questionsTableBody");
@@ -181,22 +70,78 @@ function displayQuestions(questions) {
     currentPage === "index.php" ? questions.slice(0, 5) : questions;
 
   let rows = questionsData
-    .map(
-      (question) => `
+    .map((question) => {
+      // Escape all strings to prevent JS injection and syntax errors
+      const id = question.id;
+      const questionText = question.question.replace(/'/g, "\\'");
+      const category = question.category.replace(/'/g, "\\'");
+      const type = question.type;
+      const mark = question.mark_allocated;
+      const solution = question.solution.replace(/'/g, "\\'");
+      const options = JSON.stringify(question.options).replace(/'/g, "\\'");
+
+      return `
       <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-200 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-        <th scope="row" class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">${question.question}</th>
-        <td class="px-6 py-2">${question.category}</td>
-        <td class="px-6 py-2">${question.type}</td>
-        <td class="px-6 py-2">${question.mark_allocated}</td>
-        <td class="px-6 py-2">
-              <button class="px-3 py-1 text-red-600 hover:underline" onclick="deleteQuestion('${question.id}')">Delete</button>
-          </td>
+          <th scope="row" class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">${questionText}</th>
+          <td class="px-6 py-2">${category}</td>
+          <td class="px-6 py-2">${type}</td>
+          <td class="px-6 py-2">${mark}</td>
+          <td class="px-6 py-2 flex gap-2">
+              <button class="px-3 py-1 bg-red-500 rounded-md text-white" onclick="deleteQuestion('${id}')">Delete</button>
+              <a href="edit-question.php?id=${id}" class="px-3 py-1 bg-green-600 rounded-md text-white text-center inline-block">Edit</a>          </td>
       </tr>
-    `
-    )
+      `;
+    })
     .join("");
 
   tableBody.innerHTML = rows;
 }
+
+function showToast(message, type) {
+  let toast = document.createElement("div");
+  toast.className = `fixed top-5 left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-lg ${
+    type === "success" ? "bg-green-600 text-white" : "bg-red-600 text-white"
+  }`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+function populateModal(id, question, category, type, marks, solution, options) {
+  console.log("populateModal called with:", {
+    id,
+    question,
+    category,
+    type,
+    marks,
+    solution,
+    options,
+  });
+  document.querySelector("#editQuestionForm input[name='questionId']").value =
+    id;
+  document.querySelector("#editQuestionForm textarea[name='question']").value =
+    question;
+  document.querySelector(
+    "#editQuestionForm select[name='questionCategory']"
+  ).value = category;
+  document.querySelector(
+    "#editQuestionForm select[name='questionType']"
+  ).value = type;
+  document.querySelector(
+    "#editQuestionForm input[name='questionMarks']"
+  ).value = marks;
+  document.querySelector(
+    "#editQuestionForm textarea[name='questionSolution']"
+  ).value = solution;
+
+  // Populate the options
+  const optionInputs = document.querySelectorAll(
+    "#editQuestionForm input[name='options']"
+  );
+  optionInputs.forEach((input, index) => {
+    input.value = options[index] || ""; // Fills existing options, leaves others empty
+  });
+}
+
 // Fetch roles when the page loads
 document.addEventListener("DOMContentLoaded", fetchQuestion);

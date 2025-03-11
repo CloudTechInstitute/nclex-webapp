@@ -53,10 +53,7 @@ if (!isset($_SESSION['LoggedUser'])) {
                         class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
                         New Product
                     </button>
-                    <button data-modal-target="product-modal" data-modal-toggle="product-modal"
-                        class="block text-white dark:text-gray-900 bg-blue-900 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-green-400">
-                        New Product
-                    </button>
+
                     <?php break;
 
                         default:
@@ -81,6 +78,10 @@ if (!isset($_SESSION['LoggedUser'])) {
                             include 'components/content-manager-card.php';
                             break;
 
+                        case 'product manager':
+                            include 'components/product-manager-card.php';
+                            break;
+
                         default:
 
                             break;
@@ -92,6 +93,7 @@ if (!isset($_SESSION['LoggedUser'])) {
 
                 <!-- tables here -->
                 <?php switch ($role) {
+
                     case 'account manager': ?>
                 <div class="w-full px-6 mb-5 ">
                     <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent employee accounts</p>
@@ -114,6 +116,8 @@ if (!isset($_SESSION['LoggedUser'])) {
                         </div>
                     </div>
                 </div>
+
+
                 <?php break;
                     case 'content manager': ?>
                 <div class="w-full px-6 mb-5 ">
@@ -130,7 +134,25 @@ if (!isset($_SESSION['LoggedUser'])) {
                             <?php include 'components/questions-table.php'; ?>
                         </div>
                     </div>
-                </div> <?php } ?>
+                </div> <?php break;
+
+                    case 'product manager': ?>
+                <div class="w-full px-6 mb-5 ">
+                    <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent product</p>
+                    <div class="border border-gray-500 overflow-x-auto">
+                        <?php include 'components/products-table.php'; ?>
+                    </div>
+                </div>
+
+                <div class="mb-5 lg:mb-0 w-full px-6 ">
+                    <div class="w-full">
+                        <p class="uppercase font-bold mb-2 text-sm text-gray-400">subscription count</p>
+                        <div class="border border-gray-500 overflow-x-auto">
+                            <?php include 'components/subscriptions-table.php'; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
 
             </div>
         </div>
@@ -174,19 +196,27 @@ if (!isset($_SESSION['LoggedUser'])) {
 
     <?php
     switch ($role) {
-        case "content manager": ?>
-    <script type="text/javascript" src="backend/js/content-dashboardCards.js"></script>
-    <script type="text/javascript" src="backend/js/create-question.js"></script>
-    <script type="text/javascript" src="backend/js/fetch-questions.js"></script>
-    <script type="text/javascript" src="backend/js/fetch-videos.js"></script>
-    <script type="text/javascript" src="backend/js/importquestion.js"></script>
-    <?php break; ?>
-    <?php default: ?>
-    <script type="text/javascript" src="backend/js/js-functions.js"></script>
-    <script type="text/javascript" src="backend/js/fetchEmployees.js"></script>
-    <script type="text/javascript" src="backend/js/fetchSubscriber.js"></script>
-    <script type="text/javascript" src="backend/js/dashboardCards.js"></script>
-    <script type="text/javascript" src="backend/js/create-product.js"></script>
-    <?php break; ?>
-    <?php } ?>
+        case "content manager":
+            echo '<script type="text/javascript" src="backend/js/content-dashboardCards.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/create-question.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/fetch-questions.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/fetch-videos.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/importquestion.js"></script>';
+            break;
+
+        case "product manager":
+            echo '<script type="text/javascript" src="backend/js/create-product.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/product-dashboardCards.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/fetch-products.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/fetch-subscriptions.js"></script>';
+
+            break;
+        default:
+            echo '<script type="text/javascript" src="backend/js/js-functions.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/fetchEmployees.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/fetchSubscriber.js"></script>';
+            echo '<script type="text/javascript" src="backend/js/dashboardCards.js"></script>';
+            break;
+    }
+    ?>
     <?php include 'footer.php'; ?>

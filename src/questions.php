@@ -51,6 +51,10 @@ if (!isset($_SESSION['LoggedUser'])) {
         <?php include "components/modals/import-question-modal.php"; ?>
     </div>
 
+
+    <div id="editModal" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <?php include "components/modals/edit-question-modal.php"; ?>
     </div>
 
     <script type="text/javascript" src="backend/js/create-question.js"></script>
