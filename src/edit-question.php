@@ -37,8 +37,6 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-
-
 <body class="dark:bg-gray-800 dark:text-white">
     <div class=" flex h-screen">
         <!-- Sidebar -->

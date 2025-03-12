@@ -42,7 +42,7 @@ if (!isset($_SESSION['LoggedUser'])) {
                     <form class="p-4 md:p-5 " id="uploadVideoForm" method="post" enctype="multipart/form-data">
                         <div class="grid gap-4 mb-4 grid-cols-2">
                             <label class="col-span-2  block text-sm font-medium text-gray-900 dark:text-white">Upload
-                                Video <span class="text-green-400 mr-2">(file size limit 100MB)</span>
+                                Video <span class="text-green-400 mr-2">(file size limit 10MB)</span>
                             </label>
                             <div class="col-span-2 md:col-span-1">
                                 <input type="text" name="videoname" id="videoname"

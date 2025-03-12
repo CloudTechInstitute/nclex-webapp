@@ -15,7 +15,7 @@ $stmt->bind_param("i", $questionId);
 if ($stmt->execute()) {
     echo json_encode(["status" => "success"]);
 } else {
-    echo json_encode(["status" => "error", "message" => "Failed to delete role"]);
+    echo json_encode(["status" => "error", "message" => "Failed to delete question"]);
 }
 
 $stmt->close();

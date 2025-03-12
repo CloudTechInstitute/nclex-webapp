@@ -4,10 +4,12 @@
             <th scope="col" class="px-6 py-3 font-bold uppercase">Product</th>
             <th scope="col" class="px-6 py-3 font-bold uppercase">Duration</th>
             <th scope="col" class="px-6 py-3 font-bold uppercase">Total</th>
-            <th scope="col" class="px-6 py-3 font-bold uppercase">Action</th>
+            <th scope="col" class="px-6 py-3 font-bold uppercase">Status</th>
+
         </tr>
     </thead>
     <tbody id="subscriptionsTableBody">
         <!-- Table data goes here -->
     </tbody>
 </table>
+<div id="paginationControls" class="p-2 bg-gray-700"></div>

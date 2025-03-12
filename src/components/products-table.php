@@ -53,3 +53,4 @@
 
     </tbody>
 </table>
+<div id="pagination" class="p-2 bg-gray-700"></div>

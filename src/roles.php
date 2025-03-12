@@ -205,6 +205,7 @@ if (!isset($_SESSION['LoggedUser'])) {
     </div>
 
     <script type="text/javascript" src="backend/js/js-functions.js"></script>
+    <script type="text/javascript" src="backend/js/fetch-roles.js"></script>
     <script type="text/javascript" src="backend/js/fetchEmployees.js"></script>
 
     <?php include 'footer.php'; ?>

@@ -126,15 +126,14 @@ if (!isset($_SESSION['LoggedUser'])) {
                         <?php include 'components/videos-table.php'; ?>
                     </div>
                 </div>
-
-                <div class="mb-5 lg:mb-0 w-full px-6 ">
-                    <div class="w-full">
-                        <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent questions</p>
-                        <div class="border border-gray-500 overflow-x-auto">
-                            <?php include 'components/questions-table.php'; ?>
-                        </div>
+                <div class="w-full px-6 mb-5 ">
+                    <p class="uppercase font-bold mb-2 text-sm text-gray-400">recent questions</p>
+                    <div class="border border-gray-500 overflow-x-auto">
+                        <?php include 'components/questions-table.php'; ?>
                     </div>
-                </div> <?php break;
+                </div>
+
+                <?php break;
 
                     case 'product manager': ?>
                 <div class="w-full px-6 mb-5 ">

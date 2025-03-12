@@ -47,22 +47,22 @@ if (isset($_GET['id'])) {
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Content Area -->
-            <div class="px-6 py-8 flex justify-between items-end mb-8">
-                <p class="uppercase font-bold text-xl">Edit Product</p>
+            <div class="px-6 py-8  flex justify-between items-end mb-8">
+                <p class="uppercase ml-10 lg:ml-0 font-bold text-xl">Edit Product</p>
             </div>
             <div class="overflow-y-auto px-6">
-                <div class="flex gap-6">
+                <div class="lg:flex gap-6">
                     <div
-                        class="dark:bg-gray-800 p-3 rounded-lg w-[75%] border dark:border-gray-700 border-gray-400 shadow-md">
+                        class="dark:bg-gray-800 p-3 rounded-lg w-full mb-4 lg:mb-0 lg:w-[75%] border dark:border-gray-700 border-gray-400 shadow-md">
                         <?php include 'components/edit-product-form.php'; ?>
                     </div>
                     <div
-                        class="dark:bg-gray-800 p-6 rounded-lg w-[25%] border dark:border-green-600 border-gray-400 shadow-md">
+                        class="dark:bg-gray-800 p-6 rounded-lg w-full lg:w-[25%] mb-4 lg:mb-0 border dark:border-green-600 border-gray-400 shadow-md">
                         <div class="text-center mb-6">
-                            <div class="">
+                            <div class="mb-5">
                                 <?php echo $question["name"]; ?>
                             </div>
-                            <div class="text-7xl text-green-600 font-bold">
+                            <div class="text-5xl text-green-600 font-bold mb-5">
                                 <span class="text-2xl align-super">$</span><?php echo $question["cost"]; ?>
                             </div>
                             <div class="font-semibold text-xl">
@@ -106,6 +106,6 @@ if (isset($_GET['id'])) {
     </div>
     <!-- role modal -->
 
-    <script type="text/javascript" src="backend/js/uploadProfile.js"></script>
+    <script type="text/javascript" src="backend/js/edit-product.js"></script>
 
     <?php include 'footer.php'; ?>

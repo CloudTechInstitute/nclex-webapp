@@ -42,9 +42,18 @@ document.addEventListener("DOMContentLoaded", function () {
       // Show toast notification
       showToast(toastMessage, toastType);
 
-      // Close modal
+      // Close modal and remove backdrop
       let modal = e.target.closest(".fixed");
-      if (modal) modal.classList.add("hidden");
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        // Also remove any existing modal backdrop
+        let backdrop = document.querySelector(".modal-backdrop");
+        if (backdrop) {
+          backdrop.remove(); // Completely remove the backdrop
+        }
+      }
 
       // Refresh subscriber list
       fetchSubscribers();

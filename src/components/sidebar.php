@@ -1,7 +1,9 @@
 <aside id="sidebar"
     class="w-64 h-screen p-5 flex flex-col justify-between outline outline-2 outline-gray-300 dark:outline-none bg-gray-100 dark:bg-gray-900 transition-transform transform -translate-x-full md:translate-x-0 fixed md:relative z-50">
     <div>
-        <h1 class="text-2xl ml-10 lg:ml-0 font-bold dark:text-green-400 text-blue-900 uppercase">Global Nclex</h1>
+        <h1 class="text-2xl md:text-xl lg:text-2xl ml-4 lg:ml-0 font-bold dark:text-green-400 text-blue-900 uppercase">
+            Global Nclex
+        </h1>
         <nav class="mt-6">
             <a href="index.php" class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
                 <div class="flex gap-3 items-center">
@@ -59,13 +61,7 @@
                     <div>Lessons</div>
                 </div>
             </a>
-            <a href="subscriptions.php"
-                class="block font-semibold p-4 hover:bg-gray-300 dark:hover:bg-gray-800 rounded">
-                <div class="flex gap-3 items-center">
-                    <i class="fa-solid text-blue-600 dark:text-green-400 fa-list"></i>
-                    <div>Subscriptions</div>
-                </div>
-            </a><?php
+            <?php
                     break;
 
                 case 'product manager':
